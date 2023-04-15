@@ -8,6 +8,7 @@ export interface IBathroom {
     type: string,
     coordinates: number[], // longitude, latitude
   };
+  description: string,
   unisex: boolean;
   levels: string[];
   hasElevatorAccess: boolean;
@@ -51,6 +52,6 @@ export const BathroomSchema = new Schema<IBathroom>({
   },
 });
 
-const BathroomModel = mongoose.model<IBathroom>('Resource', BathroomSchema);
+const BathroomModel = mongoose.model<IBathroom>('Bathroom', BathroomSchema);
 
 export default BathroomModel;

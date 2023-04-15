@@ -7,11 +7,19 @@ export const CreateBathroomSchema = joi.object<IBathroom>({
   id: joi.string().required().error(() => {
     throw new BaseError(getFieldNotFoundError('id'), 400);
   }),
-  location: joi.object({
-    type: joi.string().required(),
-    coordinates: joi.array().items(joi.number()).required(),
+  name: joi.string().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('name'), 400);
   }),
-  unisex: joi.string().required().error(() => {
+  location: joi.object().keys({
+    type: joi.string(),
+    coordinates: joi.array().items(joi.number()),
+  }).required().error(() => {
+    throw new BaseError(getFieldNotFoundError('location'), 400);
+  }),
+  description: joi.string().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('description'), 400);
+  }),
+  unisex: joi.boolean().required().error(() => {
     throw new BaseError(getFieldNotFoundError('unisex'), 400);
   }),
   levels: joi.array().items(joi.string()).required().error(() => {
@@ -49,11 +57,13 @@ export interface CreateBathroomRequest extends ValidatedRequestSchema {
 
 export const UpdateBathroomSchema = joi.object<IBathroom>({
   id: joi.string(),
-  location: joi.object({
+  name: joi.string(),
+  location: joi.object().keys({
     type: joi.string(),
     coordinates: joi.array().items(joi.number()),
   }),
-  unisex: joi.string(),
+  description: joi.string(),
+  unisex: joi.boolean(),
   levels: joi.array().items(joi.string()),
   hasElevatorAccess: joi.boolean(),
   hasGrabBars: joi.number(),
