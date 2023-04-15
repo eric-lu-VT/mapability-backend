@@ -49,8 +49,8 @@ const deleteBathroom = async (id: string): Promise<HydratedDocument<IBathroom>> 
   return deletedBathroom;
 };
 
-
-const createBathroom = async (bathroom: Pick<IBathroom, 'location' | 'gender' | 'level' | 'hasElevatorAccess' | 'hasGrabBars' | 'singleUse' | 'buildingRampAccess' | 'changingTable' | 'accessibleDoor' | 'hasMenstrualProducts' | 'reviews'>): Promise<HydratedDocument<IBathroom>> => {
+// TODO: Can also do Omit<...> instead
+const createBathroom = async (bathroom: Partial<IBathroom>): Promise<HydratedDocument<IBathroom>> => {
   try {
     return await BathroomModel.create({ 
       ...bathroom, 
