@@ -7,7 +7,15 @@ export interface IBathroom {
     type: string,
     coordinates: number[],
   };
-  accessibilityFeatures: string[];
+  gender: string;
+  level: number;
+  hasElevatorAccess: boolean;
+  hasGrabBars: number;
+  singleUse?: boolean;
+  buildingRampAccess?: boolean;
+  changingTable?: boolean;
+  accessibleDoor?: boolean;
+  hasMenstrualProducts?: boolean;
   reviews: IReview[];
 }
 
@@ -24,9 +32,15 @@ export const BathroomSchema = new Schema<IBathroom>({
       required: true,
     },
   },
-  description: { type: String, required: true },
-  value: { type: Number, required: true },
-  accessibilityFeatures: [{ type: String }],
+  gender: {type: String},
+  level: {type: String},
+  hasElevatorAccess: {type: String, required: true},
+  hasGrabBars: {type: String, required: true},
+  singleUse: {type: String},
+  buildingRampAccess: {type: String},
+  changingTable: {type: String},
+  accessibleDoor: {type: String},
+  hasMenstrualProducts: {type: String},
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {
   timestamps: true,
