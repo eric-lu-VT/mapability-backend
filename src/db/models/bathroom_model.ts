@@ -3,24 +3,27 @@ import { IReview } from './review_model';
 
 export interface IBathroom {
   id: string;
+  name: string,
   location: {
     type: string,
-    coordinates: number[],
+    coordinates: number[], // longitude, latitude
   };
-  gender: string;
-  level: number;
+  description: string,
+  unisex: boolean;
+  levels: string[];
   hasElevatorAccess: boolean;
   hasGrabBars: boolean;
-  isSingleUse?: boolean;
-  buildingRampAccess?: boolean;
-  changingTable?: boolean;
-  accessibleDoor?: boolean;
-  hasMenstrualProducts?: boolean;
+  isSingleUse: boolean;
+  buildingRampAccess: boolean;
+  changingTable: boolean;
+  accessibleDoor: boolean;
+  hasMenstrualProducts: boolean;
   reviews: IReview[];
 }
 
 export const BathroomSchema = new Schema<IBathroom>({
   id: { type: String, required: true, unique: true },
+  name: String,
   location: {
     type: {
       type: String,
@@ -32,8 +35,8 @@ export const BathroomSchema = new Schema<IBathroom>({
       required: true,
     },
   },
-  gender: { type: String },
-  level: { type: Number },
+  unisex: { type: Boolean },
+  levels: { type: [String] },
   hasElevatorAccess: { type: Boolean, required: true },
   hasGrabBars: { type: Boolean, required: true },
   isSingleUse: { type: Boolean },
@@ -49,6 +52,6 @@ export const BathroomSchema = new Schema<IBathroom>({
   },
 });
 
-const BathroomModel = mongoose.model<IBathroom>('Resource', BathroomSchema);
+const BathroomModel = mongoose.model<IBathroom>('Bathroom', BathroomSchema);
 
 export default BathroomModel;

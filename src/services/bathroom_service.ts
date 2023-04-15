@@ -4,27 +4,45 @@ import DocumentNotFoundError from 'errors/DocumentNotFoundError';
 import BathroomModel, { IBathroom } from 'db/models/bathroom_model';
 import { BaseError } from 'errors';
 import { HydratedDocument } from 'mongoose';
+import { IReview } from '../db/models/review_model';
 
 export interface BathroomParams {
-  location: {
-    type: string;
-    coordinates: [number, number];
-  };
-  gender: string;
-  level: number;
-  hasElevatorAccess: boolean;
-  hasGrabBars: number;
-  singleUse?: boolean;
+  id?: string;
+  name?: string;
+  location?: any; // TODO: Fix
+  description?: string;
+  unisex?: boolean;
+  levels?: string[];
+  hasElevatorAccess?: boolean;
+  hasGrabBars?: boolean;
+  isSingleUse?: boolean;
   buildingRampAccess?: boolean;
   changingTable?: boolean;
   accessibleDoor?: boolean;
   hasMenstrualProducts?: boolean;
+  reviews?: IReview[],
+
+  searchLng?: number,
+  searchLat?: number,
+  searchRadius?: number, // km
 }
 
+const KM_TO_DEG = (1 / 111.12);
+
 const constructQuery = (params: BathroomParams) => {
-  return {
+  const searchPayload = {
     ...params,
   };
+
+  if (params.searchLng && params.searchLat && params.searchRadius) {
+    searchPayload.location = {
+      $geoWithin: { 
+        $centerSphere: [[params.searchLng, params.searchLat], (params.searchRadius * KM_TO_DEG)], // Radius of the circle in the query is in degrees
+      },
+    };
+  }
+  
+  return searchPayload;
 };
 
 const getBathrooms = async (params: BathroomParams): Promise<HydratedDocument<IBathroom>[]> => {
@@ -50,7 +68,7 @@ const deleteBathroom = async (id: string): Promise<HydratedDocument<IBathroom>> 
 };
 
 // TODO: Can also do Omit<...> instead
-const createBathroom = async (bathroom: Partial<IBathroom>): Promise<HydratedDocument<IBathroom>> => {
+const createBathroom = async (bathroom: Omit<IBathroom, 'id'>): Promise<HydratedDocument<IBathroom>> => {
   try {
     return await BathroomModel.create({ 
       ...bathroom, 
