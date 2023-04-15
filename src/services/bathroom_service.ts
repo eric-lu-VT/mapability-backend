@@ -10,7 +10,15 @@ export interface BathroomParams {
     type: string;
     coordinates: [number, number];
   };
-  accessibilityFeatures?: string[];
+  gender: string;
+  level: number;
+  hasElevatorAccess: boolean;
+  hasGrabBars: number;
+  singleUse?: boolean;
+  buildingRampAccess?: boolean;
+  changingTable?: boolean;
+  accessibleDoor?: boolean;
+  hasMenstrualProducts?: boolean;
 }
 
 const constructQuery = (params: BathroomParams) => {
@@ -42,8 +50,7 @@ const deleteBathroom = async (id: string): Promise<HydratedDocument<IBathroom>> 
 };
 
 
-//unsure about this
-const createBathroom = async (bathroom: Pick<IBathroom, 'location' | 'accessibilityFeatures' | 'reviews' >): Promise<HydratedDocument<IBathroom>> => {
+const createBathroom = async (bathroom: Pick<IBathroom, 'location' | 'gender' | 'level' | 'hasElevatorAccess' | 'hasGrabBars' | 'singleUse' | 'buildingRampAccess' | 'changingTable' | 'accessibleDoor' | 'hasMenstrualProducts' | 'reviews'>): Promise<HydratedDocument<IBathroom>> => {
   try {
     return await BathroomModel.create({ 
       ...bathroom, 

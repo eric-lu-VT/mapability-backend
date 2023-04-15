@@ -18,7 +18,7 @@ const constructQuery = (params: ReviewParams) => {
   };
 };
 
-const getResources = async (params: ReviewParams): Promise<HydratedDocument<IReview>[]> => {
+const getReviews = async (params: ReviewParams): Promise<HydratedDocument<IReview>[]> => {
   const query = constructQuery(params);
   
   try {
@@ -28,22 +28,22 @@ const getResources = async (params: ReviewParams): Promise<HydratedDocument<IRev
   }
 };
 
-const updateResource = async (id: string, params: ReviewParams): Promise<HydratedDocument<IReview>> => {
-  const resource = await ReviewModel.findOneAndUpdate({ id }, params, { new: true });
-  if (!resource) throw new DocumentNotFoundError(id);
-  return resource;
+const updateReview = async (id: string, params: ReviewParams): Promise<HydratedDocument<IReview>> => {
+  const review = await ReviewModel.findOneAndUpdate({ id }, params, { new: true });
+  if (!review) throw new DocumentNotFoundError(id);
+  return review;
 };
 
-const deleteResource = async (id: string): Promise<HydratedDocument<IReview>> => {
-  const deletedResource = await ReviewModel.findOneAndDelete({ id });
-  if (!deletedResource) throw new DocumentNotFoundError(id);
-  return deletedResource;
+const deleteReview = async (id: string): Promise<HydratedDocument<IReview>> => {
+  const deletedReview = await ReviewModel.findOneAndDelete({ id });
+  if (!deletedReview) throw new DocumentNotFoundError(id);
+  return deletedReview;
 };
 
-const createResource = async (resource: Pick<IReview, 'bathroomId' | 'userId' | 'rating' | 'comment'>): Promise<HydratedDocument<IReview>> => {
+const createReview = async (review: Pick<IReview, 'bathroomId' | 'userId' | 'rating' | 'comment'>): Promise<HydratedDocument<IReview>> => {
   try {
     return await ReviewModel.create({ 
-      ...resource, 
+      ...review, 
     });
   } catch (e : any) {
     throw e;
@@ -51,11 +51,11 @@ const createResource = async (resource: Pick<IReview, 'bathroomId' | 'userId' | 
 };
 
 
-const resourceService = {
-  createResource,
-  getResources,
-  updateResource,
-  deleteResource,
+const reviewService = {
+  createReview,
+  getReviews,
+  updateReview,
+  deleteReview,
 };
 
-export default resourceService;
+export default reviewService;
