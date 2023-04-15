@@ -23,7 +23,7 @@ export const CreateBathroomSchema = joi.object<IBathroom>({
   hasGrabBars: joi.number().required().error(() => {
     throw new BaseError(getFieldNotFoundError('hasGrabBars'), 400);
   }),
-  singleUse: joi.boolean().optional(),
+  isSingleUse: joi.boolean().optional(),
   buildingRampAccess: joi.boolean().optional(),
   changingTable: joi.boolean().optional(),
   accessibleDoor: joi.boolean().optional(),
@@ -31,23 +31,21 @@ export const CreateBathroomSchema = joi.object<IBathroom>({
   reviews: joi.array().items(joi.string()).optional(),
 });
 
-
-export interface createBathroomRequest extends ValidatedRequestSchema {
+export interface CreateBathroomRequest extends ValidatedRequestSchema {
   [ContainerTypes.Body]: IBathroom
 }
-
 
 export const UpdateBathroomSchema = joi.object<IBathroom>({
   id: joi.string(),
   location: joi.object({
     type: joi.string(),
-    coordinates: joi.array().items(joi.number())
+    coordinates: joi.array().items(joi.number()),
   }),
   gender: joi.string(),
   level: joi.number(),
   hasElevatorAccess: joi.boolean(),
   hasGrabBars: joi.number(),
-  singleUse: joi.boolean(),
+  isSingleUse: joi.boolean(),
   buildingRampAccess: joi.boolean(),
   changingTable: joi.boolean(),
   accessibleDoor: joi.boolean(),

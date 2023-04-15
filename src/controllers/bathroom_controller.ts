@@ -2,10 +2,10 @@ import { RequestHandler } from 'express';
 import { ValidatedRequest } from 'express-joi-validation';
 import { BaseError } from 'errors';
 import { getSuccessfulDeletionMessage } from 'util/constants';
-import { createBathroomRequest, updateBathroomRequest } from 'validation/bathroom';
+import { CreateBathroomRequest, UpdateBathroomRequest } from 'validation/bathroom';
 import { bathroomService } from 'services';
 
-const createBathroom: RequestHandler = async (req: ValidatedRequest<createBathroomRequest>, res, next) => {
+const createBathroom: RequestHandler = async (req: ValidatedRequest<CreateBathroomRequest>, res, next) => {
   try {
     const savedBathroom = await bathroomService.createBathroom(req.body);
     res.status(201).json(savedBathroom);
@@ -40,7 +40,7 @@ const getBathroom: RequestHandler = async (req, res, next) => {
   }
 };
 
-const updateBathroom: RequestHandler = async (req: ValidatedRequest<updateBathroomRequest>, res, next) => {
+const updateBathroom: RequestHandler = async (req: ValidatedRequest<UpdateBathroomRequest>, res, next) => {
   try {
     // Ensure that user cannot update protected fields
     const { location, reviews, ...updatedFields } = req.body;

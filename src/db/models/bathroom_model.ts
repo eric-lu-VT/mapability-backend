@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IReview } from './review_model'
+import { IReview } from './review_model';
 
 export interface IBathroom {
   id: string;
@@ -10,8 +10,8 @@ export interface IBathroom {
   gender: string;
   level: number;
   hasElevatorAccess: boolean;
-  hasGrabBars: number;
-  singleUse?: boolean;
+  hasGrabBars: boolean;
+  isSingleUse?: boolean;
   buildingRampAccess?: boolean;
   changingTable?: boolean;
   accessibleDoor?: boolean;
@@ -32,15 +32,15 @@ export const BathroomSchema = new Schema<IBathroom>({
       required: true,
     },
   },
-  gender: {type: String},
-  level: {type: String},
-  hasElevatorAccess: {type: String, required: true},
-  hasGrabBars: {type: String, required: true},
-  singleUse: {type: String},
-  buildingRampAccess: {type: String},
-  changingTable: {type: String},
-  accessibleDoor: {type: String},
-  hasMenstrualProducts: {type: String},
+  gender: { type: String },
+  level: { type: Number },
+  hasElevatorAccess: { type: Boolean, required: true },
+  hasGrabBars: { type: Boolean, required: true },
+  isSingleUse: { type: Boolean },
+  buildingRampAccess: { type: Boolean },
+  changingTable: { type: Boolean },
+  accessibleDoor: { type: Boolean },
+  hasMenstrualProducts: { type: Boolean },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {
   timestamps: true,
