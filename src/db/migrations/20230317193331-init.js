@@ -79,6 +79,39 @@ module.exports = {
           console.log(e);
         }
       }));
+
+    /**
+      * Bathroom Data
+      */
+    const bathrooms = [
+      {
+        id: '909dee79-ac3f-49ff-9182-441b06de6a86',
+        name: 'Carson Hall',
+        location: {
+          type: 'Point',
+          coordinates: [-72.2887446, 43.7053972],
+        },
+        unisex: true,
+        levels: ['2', '3'],
+        hasElevatorAccess: false,
+        hasGrabBars: false,
+        isSingleUse: true,
+        buildingRampAccess: false,
+        changingTable: false,
+        accessibleDoor: false,
+        hasMensturalProducts: false,
+        reviews: [],
+      },
+    ];
+    await Promise.all(
+      bathrooms.map(async (resource) => {
+        try {
+          console.log(resources);
+          await db.collection('bathrooms').insert(resource);
+        } catch (e) {
+          console.log(e);
+        }
+      }));
   },
 
   async down(db) {
@@ -87,5 +120,6 @@ module.exports = {
     // await db.collection('albums').updateOne({artist: 'The Beatles'}, {$set: {blacklisted: false}});
     await db.collection('users').drop();
     await db.collection('resources').drop();
+    await db.collection('bathrooms').drop();
   },
 };

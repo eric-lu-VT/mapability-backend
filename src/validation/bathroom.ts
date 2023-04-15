@@ -11,11 +11,11 @@ export const CreateBathroomSchema = joi.object<IBathroom>({
     type: joi.string().required(),
     coordinates: joi.array().items(joi.number()).required(),
   }),
-  gender: joi.string().required().error(() => {
-    throw new BaseError(getFieldNotFoundError('gender'), 400);
+  unisex: joi.string().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('unisex'), 400);
   }),
-  level: joi.number().required().error(() => {
-    throw new BaseError(getFieldNotFoundError('level'), 400);
+  levels: joi.array().items(joi.string()).required().error(() => {
+    throw new BaseError(getFieldNotFoundError('levels'), 400);
   }),
   hasElevatorAccess: joi.boolean().required().error(() => {
     throw new BaseError(getFieldNotFoundError('hasElevatorAccess'), 400);
@@ -23,12 +23,24 @@ export const CreateBathroomSchema = joi.object<IBathroom>({
   hasGrabBars: joi.number().required().error(() => {
     throw new BaseError(getFieldNotFoundError('hasGrabBars'), 400);
   }),
-  isSingleUse: joi.boolean().optional(),
-  buildingRampAccess: joi.boolean().optional(),
-  changingTable: joi.boolean().optional(),
-  accessibleDoor: joi.boolean().optional(),
-  hasMenstrualProducts: joi.boolean().optional(),
-  reviews: joi.array().items(joi.string()).optional(),
+  isSingleUse: joi.boolean().optional().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('isSingleUse'), 400);
+  }),
+  buildingRampAccess: joi.boolean().optional().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('buildingRampAccess'), 400);
+  }),
+  changingTable: joi.boolean().optional().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('changingTable'), 400);
+  }),
+  accessibleDoor: joi.boolean().optional().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('accessibleDoor'), 400);
+  }),
+  hasMenstrualProducts: joi.boolean().optional().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('hasMenstrualProducts'), 400);
+  }),
+  reviews: joi.array().items(joi.string()).optional().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('reviews'), 400);
+  }),
 });
 
 export interface CreateBathroomRequest extends ValidatedRequestSchema {
@@ -41,8 +53,8 @@ export const UpdateBathroomSchema = joi.object<IBathroom>({
     type: joi.string(),
     coordinates: joi.array().items(joi.number()),
   }),
-  gender: joi.string(),
-  level: joi.number(),
+  unisex: joi.string(),
+  levels: joi.array().items(joi.string()),
   hasElevatorAccess: joi.boolean(),
   hasGrabBars: joi.number(),
   isSingleUse: joi.boolean(),
