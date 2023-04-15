@@ -7,9 +7,7 @@
   "main": "src/server.js",
   "repository": "",
   "author": "Eric Lu <Eric.J.Lu.25@dartmouth.edu>",
-  "contributors": [
-
-  ],
+  "contributors": [],
   "license": "MIT",
   "scripts": {
     "lint": "eslint ./src",
@@ -20,6 +18,7 @@
     "prod": "yarn build; node dist/server.js"
   },
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.28",
     "@sendgrid/mail": "^7.7.0",
     "@types/mongoose": "^5.11.97",
     "aws-sdk": "^2.1338.0",
