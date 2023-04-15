@@ -2,10 +2,10 @@ import { RequestHandler } from 'express';
 import { ValidatedRequest } from 'express-joi-validation';
 import { BaseError } from 'errors';
 import { getSuccessfulDeletionMessage } from 'util/constants';
-import { createReviewRequest, UpdateReviewRequest } from 'validation/review';
+import { CreateReviewRequest, UpdateReviewRequest } from 'validation/review';
 import { reviewService } from 'services';
 
-const createReview: RequestHandler = async (req: ValidatedRequest<createReviewRequest>, res, next) => {
+const createReview: RequestHandler = async (req: ValidatedRequest<CreateReviewRequest>, res, next) => {
   try {
     const savedReview = await reviewService.createReview(req.body);
     res.status(201).json(savedReview);
