@@ -37,7 +37,7 @@ const getBathrooms = async (params: BathroomParams): Promise<HydratedDocument<IB
   }
 };
 
-const updateBathrooms = async (id: string, params: BathroomParams): Promise<HydratedDocument<IBathroom>> => {
+const updateBathroom = async (id: string, params: BathroomParams): Promise<HydratedDocument<IBathroom>> => {
   const bathroom = await BathroomModel.findOneAndUpdate({ id }, params, { new: true });
   if (!bathroom) throw new DocumentNotFoundError(id);
   return bathroom;
@@ -64,7 +64,7 @@ const createBathroom = async (bathroom: Partial<IBathroom>): Promise<HydratedDoc
 const bathroomService = {
   createBathroom,
   getBathrooms,
-  updateBathrooms,
+  updateBathroom,
   deleteBathroom,
 };
 
