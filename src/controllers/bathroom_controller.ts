@@ -44,7 +44,7 @@ const updateBathroom: RequestHandler = async (req: ValidatedRequest<UpdateBathro
   try {
     // Ensure that user cannot update protected fields
     // eslint-disable-next-line no-unused-vars
-    const { location, reviews, ...updatedFields } = req.body;
+    const { ...updatedFields } = req.body;
 
     const bathroom = await bathroomService.updateBathroom(req.params.id, updatedFields);
     res.status(200).json(bathroom);

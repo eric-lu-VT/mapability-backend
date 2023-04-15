@@ -4,9 +4,6 @@ import { BaseError, getFieldNotFoundError } from 'errors';
 import { IBathroom } from 'db/models/bathroom_model';
 
 export const CreateBathroomSchema = joi.object<IBathroom>({
-  id: joi.string().required().error(() => {
-    throw new BaseError(getFieldNotFoundError('id'), 400);
-  }),
   name: joi.string().required().error(() => {
     throw new BaseError(getFieldNotFoundError('name'), 400);
   }),
@@ -28,7 +25,7 @@ export const CreateBathroomSchema = joi.object<IBathroom>({
   hasElevatorAccess: joi.boolean().required().error(() => {
     throw new BaseError(getFieldNotFoundError('hasElevatorAccess'), 400);
   }),
-  hasGrabBars: joi.number().required().error(() => {
+  hasGrabBars: joi.boolean().required().error(() => {
     throw new BaseError(getFieldNotFoundError('hasGrabBars'), 400);
   }),
   isSingleUse: joi.boolean().optional().required().error(() => {
@@ -66,7 +63,7 @@ export const UpdateBathroomSchema = joi.object<IBathroom>({
   unisex: joi.boolean(),
   levels: joi.array().items(joi.string()),
   hasElevatorAccess: joi.boolean(),
-  hasGrabBars: joi.number(),
+  hasGrabBars: joi.boolean(),
   isSingleUse: joi.boolean(),
   buildingRampAccess: joi.boolean(),
   changingTable: joi.boolean(),
