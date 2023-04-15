@@ -35,6 +35,7 @@ export const BathroomSchema = new Schema<IBathroom>({
       required: true,
     },
   },
+  description: { type: String },
   unisex: { type: Boolean },
   levels: { type: [String] },
   hasElevatorAccess: { type: Boolean, required: true },

@@ -31,7 +31,7 @@ const bathroomDataB: Omit<IBathroom, 'id'>  = {
   name: 'Fairchild Physical Sciences Center',
   location: {
     type: 'Point',
-    coordinates: [-72.2863637, 43.7057719],
+    coordinates: [-100, 100],
   },
   description: 'Only open to EARS after 5pm. Entire room locks',
   unisex: true,
@@ -58,7 +58,6 @@ describe('bathroomService', () => {
   describe('createBathroom', () => {
     it('Can create bathroom', async () => {
       const bathroom = await bathroomService.createBathroom(bathroomDataA);
-      console.log(bathroom);
 
       Object.keys(bathroomDataA)
         // .filter((key) => key)
@@ -97,7 +96,7 @@ describe('bathroomService', () => {
     });
 
     it('Filters out bathrooms by location', async () => {
-      const bathroom = await bathroomService.getBathrooms({ searchLng: -122, searchLat: 37, searchRadius: 10 });
+      const bathroom = await bathroomService.getBathrooms({ searchLng: -72.28, searchLat: 43.705, searchRadius: 10 });
       expect(bathroom.length).toBe(1);
     });
 
