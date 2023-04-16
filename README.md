@@ -61,11 +61,7 @@ For more detailed documentation on our file structure and specific functions in 
 
 1. Clone repo and `yarn install`
 2. Create [MongoDB Atlas database](https://www.mongodb.com/atlas/database)
-3. Set up SendGrid API (for email validation)
-   - Information about SendGrid API keys: https://docs.sendgrid.com/ui/account-and-settings/api-keys
-4. Set up Amazon AWS s3 bucket (for photo storage)
-   - https://cs52.me/assignments/sa/s3-upload/
-5. Create a `.env` file in the root directory
+3. Create a `.env` file in the root directory
 
 - Should be in the following format:
 - ```
@@ -73,6 +69,7 @@ For more detailed documentation on our file structure and specific functions in 
   PORT=*insert desired backend server port here*
   MONGODB_URI=mongodb+srv://...
   MONGODB_DB_NAME=
+  GOOGLE_MAPS_API_KEY=
   ```
 
 6. Run `yarn migrate-mongo up` to apply migrations and seeding to DB.
