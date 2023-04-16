@@ -276,10 +276,44 @@ module.exports = {
       },
     ];
     await Promise.all(
-      bathrooms.map(async (resource) => {
+      bathrooms.map(async (bathroom) => {
         try {
-          console.log(resources);
-          await db.collection('bathrooms').insert(resource);
+          await db.collection('bathrooms').insert(bathroom);
+        } catch (e) {
+          console.log(e);
+        }
+      }));
+
+    const reviews = [
+      {
+        id: '646a3acf-26b4-4ceb-a1c2-e7219477ee47',
+        bathroomId: '3938b364-59be-43fc-b150-96d077d1a422',
+        rating: 1,
+        comment: 'Look for the sign right outside the food area, or ask the front desk for directions - the staff are friendly.',
+      },
+      {
+        id: 'e1755ec5-5561-4756-930c-496ca73b3afe',
+        bathroomId: '3938b364-59be-43fc-b150-96d077d1a422',
+        rating: 0,
+        comment: 'Kinda buns ngl',
+      },
+      {
+        id: '086b73d7-41b7-49d1-a718-df0750499c4e',
+        bathroomId: 'ddfc662f-1aaa-4f03-9fc8-38b22d1f38cb',
+        rating: 1,
+        comment: 'You don\'t need to swipe in to get into this bathroom.',
+      },
+      {
+        id: '8f7e39e1-6da7-4bae-a0c8-8abdf66e3e66',
+        bathroomId: 'ddfc662f-1aaa-4f03-9fc8-38b22d1f38cb',
+        rating: 0,
+        comment: 'Bathrooms always way too busy',
+      },
+    ];
+    await Promise.all(
+      reviews.map(async (review) => {
+        try {
+          await db.collection('reviews').insert(review);
         } catch (e) {
           console.log(e);
         }
@@ -293,5 +327,6 @@ module.exports = {
     await db.collection('users').drop();
     await db.collection('resources').drop();
     await db.collection('bathrooms').drop();
+    await db.collection('reviews').drop();
   },
 };
