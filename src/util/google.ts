@@ -22,7 +22,7 @@ export const reverseGeocodeLocation = async ({
       },
       timeout: 1000, // milliseconds
     });
-    return res.data.results[0].place_id;
+    return res.data.results;
   } catch (e: any) {
     throw e.response.data.error_message;
   }
