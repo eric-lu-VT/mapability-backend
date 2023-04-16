@@ -21,22 +21,18 @@ if (process.env.NODE_ENV === 'test') {
 // find and return all reviews
 router.route('/')
   .post(
-    requireScope(SCOPES.USER.name),
     validator.body(CreateReviewSchema),
     reviewController.createReview,
   )
   .get(
-    requireScope(SCOPES.USER.name),
     reviewController.getReviews,
   );
 
 router.route('/:id')
   .get(
-    requireScope(SCOPES.USER.name),
     reviewController.getReview,
   )
   .patch(
-    requireScope(SCOPES.USER.name),
     validator.body(UpdateReviewSchema),
     reviewController.updateReview,
   )

@@ -10,14 +10,12 @@ const invalidId = 'invalidId';
 
 const reviewDataA: Omit<IReview, 'id'> = {
   bathroomId: '262e8092-4431-4c5c-a7bc-c96c9b46330e',
-  userId: '632a4e30-fcac-46d8-af23-1016367377d7',
   rating: 1,
   comment: 'Comment A',
 };
 
 const reviewDataB: Omit<IReview, 'id'>  = {
   bathroomId: '8b28b1bc-2352-4a5a-8ea8-1a2b6ce5f7da',
-  userId: 'a7a01625-5f7b-44ca-9449-b5f1b9aa99b5',
   rating: -1,
   comment: 'Comment B',
 };

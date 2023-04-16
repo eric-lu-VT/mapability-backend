@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import { IReview } from './review_model';
 
 export interface IBathroom {
   id: string;
@@ -18,7 +17,6 @@ export interface IBathroom {
   changingTable: boolean;
   accessibleDoor: boolean;
   hasMenstrualProducts: boolean;
-  reviews: IReview[];
 }
 
 export const BathroomSchema = new Schema<IBathroom>({
@@ -45,7 +43,6 @@ export const BathroomSchema = new Schema<IBathroom>({
   changingTable: { type: Boolean },
   accessibleDoor: { type: Boolean },
   hasMenstrualProducts: { type: Boolean },
-  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {
   timestamps: true,
   toJSON: {

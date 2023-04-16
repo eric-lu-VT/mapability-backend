@@ -3,7 +3,6 @@ import mongoose, { Schema } from 'mongoose';
 export interface IReview {
   id: string;
   bathroomId: string;
-  userId: string;
   rating: number;
   comment: string;
 }
@@ -11,7 +10,6 @@ export interface IReview {
 export const ReviewSchema = new Schema<IReview>({
   id: { type: String, required: true, unique: true },
   bathroomId: {  type: String, required: true },
-  userId: {  type: String, required: true },
   rating: { type: Number, required: true },
   comment: { type: String },
 }, {

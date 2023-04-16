@@ -41,7 +41,7 @@ const deleteReview = async (id: string): Promise<HydratedDocument<IReview>> => {
   return deletedReview;
 };
 
-const createReview = async (review: Pick<IReview, 'bathroomId' | 'userId' | 'rating' | 'comment'>): Promise<HydratedDocument<IReview>> => {
+const createReview = async (review: Pick<IReview, 'bathroomId' | 'rating' | 'comment'>): Promise<HydratedDocument<IReview>> => {
   try {
     return await ReviewModel.create({ 
       id: uuidv4(),
