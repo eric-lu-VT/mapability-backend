@@ -6,9 +6,10 @@ import { BaseError } from 'errors';
 import { HydratedDocument } from 'mongoose';
 
 export interface ReviewParams {
-  bathroomId: string;
-  userId: string;
-  rating: number;
+  id?: string;
+  bathroomId?: string;
+  userId?: string;
+  rating?: number;
   comment?: string;
 }
 
