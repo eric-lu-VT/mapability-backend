@@ -21,7 +21,6 @@ if (process.env.NODE_ENV === 'test') {
 // find and return all bathrooms
 router.route('/')
   .post(
-    requireScope(SCOPES.USER.name),
     validator.body(CreateBathroomSchema),
     bathroomController.createBathroom,
   )
@@ -34,7 +33,6 @@ router.route('/:id')
     bathroomController.getBathroom,
   )
   .patch(
-    requireScope(SCOPES.USER.name),
     validator.body(UpdateBathroomSchema),
     bathroomController.updateBathroom,
   )
