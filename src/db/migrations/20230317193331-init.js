@@ -104,6 +104,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: '028d46d0-43a8-48b0-ba01-ffcc6452757a',
         name: 'Fairchild Physical Sciences Center',
         location: {
           type: 'Point',
@@ -122,6 +123,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: 'ddfc662f-1aaa-4f03-9fc8-38b22d1f38cb',
         name: 'Class of 1953 Commons',
         location: {
           type: 'Point',
@@ -140,6 +142,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: '5c577c04-0f82-43f8-acca-3111b43d5849',
         name: 'Hood Museum of Art',
         location: {
           type: 'Point',
@@ -158,6 +161,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: '19ad2f5a-39c2-4088-b887-46e94a0e1f6e',
         name: 'Rauner Library',
         location: {
           type: 'Point',
@@ -176,6 +180,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: '3938b364-59be-43fc-b150-96d077d1a422',
         name: 'Collis Center',
         location: {
           type: 'Point',
@@ -194,6 +199,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: '7c309b1e-24bb-48aa-a3e9-7e8204a90e35',
         name: 'Silsby Hall',
         location: {
           type: 'Point',
@@ -212,6 +218,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: '0f77a4db-3612-49c3-839e-646f3fc7d229',
         name: 'Haldeman Center',
         location: {
           type: 'Point',
@@ -230,6 +237,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: '4ebb0a2b-5286-408d-847e-7caf3e9704b9',
         name: 'Buchanan Hall',
         location: {
           type: 'Point',
@@ -248,6 +256,7 @@ module.exports = {
         reviews: [],
       },
       {
+        id: '8f2c08e7-2511-47ec-a038-6b9eadbc8e0c',
         name: 'McNutt Hall',
         location: {
           type: 'Point',
