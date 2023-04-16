@@ -61,7 +61,8 @@ For more detailed documentation on our file structure and specific functions in 
 
 1. Clone repo and `yarn install`
 2. Create [MongoDB Atlas database](https://www.mongodb.com/atlas/database)
-3. Create a `.env` file in the root directory
+3. Set up [Google Maps API](https://developers.google.com/maps)
+4. Create a `.env` file in the root directory
 
 - Should be in the following format:
 - ```
@@ -72,8 +73,8 @@ For more detailed documentation on our file structure and specific functions in 
   GOOGLE_MAPS_API_KEY=
   ```
 
-6. Run `yarn migrate-mongo up` to apply migrations and seeding to DB.
-7. App should be ready for use now
+5. Run `yarn migrate-mongo up` to apply migrations and seeding to DB.
+6. App should be ready for use now
 
 - `yarn start` to run in production mode
 - `yarn run dev` to run with hot reloading
