@@ -26,13 +26,11 @@ router.route('/')
     bathroomController.createBathroom,
   )
   .get(
-    requireScope(SCOPES.USER.name),
     bathroomController.getBathrooms,
   );
 
 router.route('/:id')
   .get(
-    requireScope(SCOPES.USER.name),
     bathroomController.getBathroom,
   )
   .patch(
