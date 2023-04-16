@@ -1,42 +1,46 @@
 # Backend
 
-Backend
+## Inspiration
 
-## Designs
-[Screenshot description]
+We saw how _inaccessible_ much of the Dartmouth campus can be after speaking to some of our friends with disabilities. Our idea for MapAbility was born to help members of the disabled community find nearby accessible resources and to facilitate actions for them that many of us take for granted.
 
-[Link to the project Figma]()
+## What it does
 
-[2-4 screenshots from the app]
+MapAbility allows users to locate and query nearby accessible resources. They can query by either searching for a location, or moving the map around to locate resources elsewhere. These queries can also be filtered based on the type of resource, proximity, and aggregated users' accessibility score. Users can also comment and rate individual resources, and even add resources that aren't already in our database.
+
+## How we built it
+
+We used Express and MongoDB to build the backend. For MongoDB, we used two main models, one for bathrooms (the primary resource we were trying to build out functionality for during these 24 hours), and one for reviews. We also had endpoints for the Google Maps API, to allow users to make queries based on keywords or geospatial data.
+
+## Accomplishments that we're proud of
+
+We are really proud of our teamwork. Even though we had little experience working with each other in the past, we were able to quickly find each others' strengths and apply our skills to the project. The whole of our team was greater than the sum of its parts because we were excited to work together and motivated to make MapAbility to benefit people.
+
+## What we learned
+
+Through this project, we learned a lot about making products with an explicit focus on accessibility. We learned to try to see our landscape in the lens of accessibility and to understand how different people may be affected by different, seemingly small details around us. That philosophy pervaded both our motivation and our implementation for MapAbility.
+
+## What's next for MapAbility
+
+Currently, MapAbility only allows the user to mark, review, and locate handicap-accessible bathrooms. However, the infrastructure could be easily extended to accommodate different landmarks, such as reserved parking spaces, ramps, and elevators. This could be a simple step to making the app much more beneficial to those with disabilities.
 
 ## Architecture
+
 ### Tech Stack
-  - [Express](https://expressjs.com/)
-  - [MongoDB](https://www.mongodb.com/)
-  - [Mongoose ODM](https://mongoosejs.com/)
-  - [ts-mongoose](https://www.npmjs.com/package/ts-mongoose)
-  - [Passport.js](https://www.passportjs.org/)
-  - [axios](https://github.com/axios/axios)
-  - [TypeScript](https://www.typescriptlang.org/docs/)
 
-#### External Packages
-- [aws-sdk](https://yarnpkg.com/package/aws-sdk)
-- [@sendgrid/mail](https://docs.sendgrid.com/for-developers/sending-email/quickstart-nodejs)
-- [Add any other notable external packages here]
-
-### Style
-[Describe notable code style conventions]
-
-### Data Models
-[Brief description of typical data models.]
-
-[Detailed description should be moved to the repo's Wiki page]
+- [Express](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose ODM](https://mongoosejs.com/)
+- [ts-mongoose](https://www.npmjs.com/package/ts-mongoose)
+- [Passport.js](https://www.passportjs.org/)
+- [axios](https://github.com/axios/axios)
+- [TypeScript](https://www.typescriptlang.org/docs/)
 
 ### Directory Structure
 
     .
-    ├── ...         
-    ├── src                    
+    ├── ...
+    ├── src
     |   └── auth                # JWT middleware
     |   └── controllers         # dispatch input; output
     |   └── db                  # MongoDB database definitions
@@ -62,22 +66,20 @@ For more detailed documentation on our file structure and specific functions in 
 4. Set up Amazon AWS s3 bucket (for photo storage)
    - https://cs52.me/assignments/sa/s3-upload/
 5. Create a `.env` file in the root directory
-  - Should be in the following format:
-  - ```
-    AUTH_SECRET='*secret assortment of characters used for encryption*'
-    PORT=*insert desired backend server port here*
-    MONGODB_URI=mongodb+srv://...
-    MONGODB_DB_NAME=
-    AWS_ACCESS_KEY_ID=
-    AWS_SECRET_ACCESS_KEY=
-    S3_BUCKET_NAME=
-    SENDGRID_EMAIL=
-    SENDGRID_API_KEY=
-    ```
+
+- Should be in the following format:
+- ```
+  AUTH_SECRET='*secret assortment of characters used for encryption*'
+  PORT=*insert desired backend server port here*
+  MONGODB_URI=mongodb+srv://...
+  MONGODB_DB_NAME=
+  ```
+
 6. Run `yarn migrate-mongo up` to apply migrations and seeding to DB.
 7. App should be ready for use now
-  - `yarn start` to run in production mode
-  - `yarn run dev` to run with hot reloading
+
+- `yarn start` to run in production mode
+- `yarn run dev` to run with hot reloading
 
 #### Linting
 
@@ -85,15 +87,13 @@ ESLint is set up in this project. To keep code clean, always remember to run `ya
 
 #### Unit Testing
 
-Jest unit testing is set up for the controllers, routers, and services. Remember to run `yarn test` and fix any breaking changes that might've occured. 
-  - You can also run just an individual test file with `yarn test -- *filename*`
+Jest unit testing is set up for the controllers, routers, and services. Remember to run `yarn test` and fix any breaking changes that might've occured.
 
-## Deployment
-[Where is the app deployed? i.e. Expo, Surge, TestFlight etc.]
-
-[What are the steps to re-deploy the project with any new changes?]
-
-[How does one get access to the deployed project?]
+- You can also run just an individual test file with `yarn test -- *filename*`
 
 ## Authors
-* Firstname Lastname 'YY, role
+
+- Eric Lu '25
+- Aneesh Patnaik '25
+- Sonia Bendre '25
+- Rishav Chakravarty '25
