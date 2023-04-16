@@ -18,6 +18,11 @@ router.route('/reverse-geocode')
     googleController.googleReverseGeocode,
   );
 
+router.route('/text-search-location')
+  .get(
+    googleController.googleTextSearchLocation,
+  );
+
 if (process.env.NODE_ENV === 'test') {
   router.use(validationErrorHandler);
   router.use(errorHandler);
