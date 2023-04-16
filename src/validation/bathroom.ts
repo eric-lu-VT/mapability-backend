@@ -43,9 +43,6 @@ export const CreateBathroomSchema = joi.object<IBathroom>({
   hasMenstrualProducts: joi.boolean().optional().required().error(() => {
     throw new BaseError(getFieldNotFoundError('hasMenstrualProducts'), 400);
   }),
-  reviews: joi.array().items(joi.string()).optional().required().error(() => {
-    throw new BaseError(getFieldNotFoundError('reviews'), 400);
-  }),
 });
 
 export interface CreateBathroomRequest extends ValidatedRequestSchema {
@@ -69,7 +66,6 @@ export const UpdateBathroomSchema = joi.object<IBathroom>({
   changingTable: joi.boolean(),
   accessibleDoor: joi.boolean(),
   hasMenstrualProducts: joi.boolean(),
-  reviews: joi.array().items(joi.string()),
 });
 
 export interface UpdateBathroomRequest extends ValidatedRequestSchema {

@@ -24,7 +24,6 @@ const bathroomDataA: Omit<IBathroom, 'id'> = {
   changingTable: false,
   accessibleDoor: false,
   hasMenstrualProducts: false,
-  reviews: [],
 };
 
 const bathroomDataB: Omit<IBathroom, 'id'>  = {
@@ -43,7 +42,6 @@ const bathroomDataB: Omit<IBathroom, 'id'>  = {
   changingTable: false,
   accessibleDoor: false,
   hasMenstrualProducts: false,
-  reviews: [],
 };
 
 describe('bathroomService', () => {
