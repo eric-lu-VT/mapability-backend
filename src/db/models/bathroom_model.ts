@@ -23,7 +23,7 @@ export interface IBathroom {
 
 export const BathroomSchema = new Schema<IBathroom>({
   id: { type: String, required: true, unique: true },
-  name: String,
+  name: { type: String },
   location: {
     type: {
       type: String,

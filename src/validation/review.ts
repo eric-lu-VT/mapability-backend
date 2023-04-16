@@ -13,7 +13,9 @@ export const CreateReviewSchema = joi.object<IReview>({
   rating: joi.number().required().error(() => {
     throw new BaseError(getFieldNotFoundError('rating'), 400);
   }),
-  comment: joi.string().optional(),
+  comment: joi.string().required().error(() => {
+    throw new BaseError(getFieldNotFoundError('comment'), 400);
+  }),
 });
 
 export interface CreateReviewRequest extends ValidatedRequestSchema {
@@ -21,6 +23,7 @@ export interface CreateReviewRequest extends ValidatedRequestSchema {
 }
 
 export const UpdateReviewSchema = joi.object<IReview>({
+  id: joi.string(),
   bathroomId: joi.string(),
   userId: joi.string(),
   rating: joi.number(),

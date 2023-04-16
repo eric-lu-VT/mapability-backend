@@ -1,15 +1,17 @@
 import mongoose, { Schema } from 'mongoose';
 
 export interface IReview {
+  id: string;
   bathroomId: string;
   userId: string;
   rating: number;
-  comment?: string;
+  comment: string;
 }
 
 export const ReviewSchema = new Schema<IReview>({
-  bathroomId: {  type: Schema.Types.ObjectId, ref: 'Bathroom', required: true },
-  userId: {  type: Schema.Types.ObjectId, ref: 'User', required: true },
+  id: { type: String, required: true, unique: true },
+  bathroomId: {  type: String, required: true },
+  userId: {  type: String, required: true },
   rating: { type: Number, required: true },
   comment: { type: String },
 }, {

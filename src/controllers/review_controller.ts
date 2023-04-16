@@ -42,18 +42,9 @@ const getReview: RequestHandler = async (req, res, next) => {
 
 const updateReview: RequestHandler = async (req: ValidatedRequest<UpdateReviewRequest>, res, next) => {
   try {
-    const { userId, rating, comment } = req.body;
-    const review = await reviewService.getReview(req.params.id);
+    const { rating, comment } = req.body;
 
-    // Check if user is the creator of the review
-    if (review.userId !== userId) {
-      throw new Error('You are not authorized to update this review');
-    }
-
-    review.rating = typeof rating !== 'undefined' ? rating : review.rating;
-    review.comment = typeof comment !== 'undefined' ? comment : review.comment;
-
-    const updatedReview = await reviewService.updateReview(req.params.id, review);
+    const updatedReview = await reviewService.updateReview(req.params.id, { rating, comment });
     res.status(200).json(updatedReview);
   } catch (error) {
     next(error);

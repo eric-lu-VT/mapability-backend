@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 import { errorHandler } from 'errors';
 import { validationErrorHandler } from 'validation';
 import {
-  authRouter, userRouter, resourceRouter,
+  authRouter, userRouter, resourceRouter, bathroomRouter, reviewRouter,
 } from './routers';
 
 import * as constants from './util/constants';
@@ -33,6 +33,8 @@ app.use(bodyParser.json());
 app.use('/auth', authRouter); // NOTE: Not secured
 app.use('/users', userRouter); // NOTE: Completely secured to users
 app.use('/resources', resourceRouter); // NOTE: Partially secured to users
+app.use('/bathrooms', bathroomRouter);
+app.use('/reviews', reviewRouter);
 
 // default index route
 app.get('/', (req, res) => {
