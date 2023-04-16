@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { RequestHandler } from 'express';
 import dotenv from 'dotenv';
-import { reverseGeocodeLocation, placeDetailLocation } from 'util/google';
+import { reverseGeocodeLocation, textSearchLocation, placeDetailLocation } from 'util/google';
 
 dotenv.config();
 
@@ -17,8 +17,20 @@ const googleReverseGeocode: RequestHandler = async (req, res, next) => {
   }
 };
 
+const googleTextSearchLocation: RequestHandler = async (req, res, next) => {
+  try {
+    const search = req.query.search as string;
+    const textSearchOutput = await textSearchLocation({ query: search });
+    const placeDetail = await placeDetailLocation({ placeId: textSearchOutput?.results[0]?.place_id || '' });
+    res.status(200).json(placeDetail);
+  } catch (e: any) {
+    next(e);
+  }
+};
+
 const googleController = {
   googleReverseGeocode,
+  googleTextSearchLocation,
 };
 
 export default googleController;
