@@ -1,4 +1,8 @@
-# Backend
+# MapAbility
+
+Backend for the MapAbility app. 
+
+(Make sure to check out the frontend [here](https://github.com/eric-lu-VT/mapability-frontend)!)
 
 ## Inspiration
 
